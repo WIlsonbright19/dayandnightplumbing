@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    color: #121212;
+    background-color: #fcfbf9;
+    scrollbar-width: auto;
+    scrollbar-color: #1a1a1a #ebe7df;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Highly visible custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #ebe7df;
+  border-left: 1px solid #ded8cc;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 9999px;
+  border: 2px solid #ebe7df;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+  border: 1px solid #ebe7df;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #333333;
+}
+
+/* Hotspot pulsing effect */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.hotspot-ring {
+  animation: pulse-ring 2.4s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Pill CTA hover slide fill effect */
+.btn-pill {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  transform: translateY(102%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.btn-pill:hover::before {
+  transform: translateY(0);
+}
+
+/* Smooth parallax text masking */
+.clip-text-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
